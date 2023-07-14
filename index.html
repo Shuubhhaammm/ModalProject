@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share model app</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+       body{
+        overflow-x:hidden;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+       }
+
+       .circle1{
+        box-shadow: 0 0 50px #d84869;
+        background: linear-gradient(-25deg, #d84869, #f46641);
+        animation: circleAnimation 15s infinite;
+       }
+
+       @keyframes circleAnimation {
+        50% {
+            left: 33%;
+            top:4%;
+            scale: 1.11;
+        }
+        
+       }
+
+       .circle2{
+        box-shadow: 0 0 50px #5648d8;
+        background: linear-gradient(-25deg, #5648d8, #8641f4);
+        animation: circle2Animation 15s infinite;
+       }
+
+       @keyframes circle2Animation {
+        50% {
+            bottom: 6%;
+            right: 31%;
+        }              
+       }
+
+       .icon{
+           border-radius: 50%;
+           height:50px;
+           width:50px;
+           padding:17px;
+           margin: 10px 0px;
+           margin-bottom:25px;
+           display: flex;
+           border: 1px solid;
+           justify-content: center;
+           align-items: center;
+        }
+       .icon i {
+        font-size:27px;
+       }
+       .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border: 2px solid #ffffff59;
+    width: 500px;
+    scale: 0;
+    background: #00000088;
+    backdrop-filter: blur(10px);
+    color: white;
+    z-index: 1;
+    padding: 20px 25px;
+    border-radius: 20px;
+    transition: 0.5s ease-in-out;
+  }
+
+       .active {
+        scale: 1;
+       }
+  .overlay {
+    position: fixed;
+    background-color: #5f5f5f83;
+    top: 0;
+    opacity: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    transition: 0.5s ease-in-out;
+  }
+  .overlayactive {
+    opacity: 1;
+    pointer-events: initial;
+  }
+
+    </style>
+</head>
+<body>
+
+    <div class="w-[100vw] h-[100vh] bg-cyan-950 flex justify-center items-center relative">
+        <div class="circle1 rounded-full bg-[#d84869] w-[200px] h-[200px] absolute fixed top-[100px] left-[25%]" ></div>
+        <div class="circle2 rounded-full bg-[#5648d8] w-[200px] h-[200px] absolute fixed bottom-[100px] right-[25%]" ></div>
+
+        <div class="bg-[#ffffff1a] px-[50px] py-[20px] h-[30rem] z-1 flex flex-col justify-center items-center gap-8 rounded-lg backdrop-blur-sm">
+           
+            <div>
+                <img src="/image/photo.png" width="150px" alt="profileSelfiPhoto">
+            </div>    
+
+            <h1 class="font-bold text-[27px] text-white">Shubham Kumar</h1>
+            <p class="text-[18px] text-[#ffffffb9] font-bold">Software Development Engineer</p>
+            <div class=" flex gap-2 px-5 max-h-[80px]">
+                
+                <button onclick="openModal()" class="flex gap-[7px] max-w-[200px] bg-[#ffffff00] border-[2px] text-[#ffffffb9] py-[12px] rounded-sm px-[9px]"> 
+                    <i  class="fa-solid fa-share"></i>
+                    <div> Share My Profile</div> 
+                </button>
+                <button  class="bg-[#ffffff00] border-[2px] text-[#ffffffb9] w-[150px] py-[12px] rounded-sm px-[9px]">
+                    Follow Me</button>
+            </div>
+        </div>       
+    </div>
+
+    <!-- modal -->
+    <div class="modal ">
+        <div class=" flex mb-[25px]text-[30px] justify-between items-center pb-[12px] border-b border-[#ffffff88]">
+            <h1 class="font-bold text-[27px] text-[#fff]">share my Profile</h1>
+            <div class="text-[27px] text-[#fff]">
+                <i onclick="closeModal()" class="fa-solid fa-xmark close"></i>
+            </div>
+        </div>
+        
+        <div>
+            <h3>share this via</h3>
+
+            <div class=" flex justify-between items-center flex-wrap " >
+                <a href="#" class=" icon border-[#1771e6] text-[#1771e6] hover:bg-[#1771e6] hover:text-[#fff]"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class=" icon border-[#1c99e6] text-[#1c99e6] hover:bg-[#1c99e6] hover:text-[#fff]"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class=" icon border-[#cb2770] text-[#cb2770] hover:bg-[#cb2770] hover:text-[#fff]"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class=" icon border-[#2fe664] text-[#2fe664] hover:bg-[#2fe664] hover:text-[#fff]"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class=" icon border-[#0081c2] text-[#0081c2] hover:bg-[#1c99e6] hover:text-[#fff]"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+        </div>
+
+    </div>
+    <div class="overlay" onclick="closeModal()"></div>
+
+    <script src="https://kit.fontawesome.com/45ec490a30.js" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>
